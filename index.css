@@ -56,3 +56,28 @@ span {
   justify-content: center;
   margin: 5px 0;
 }
+
+.filter-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.filter-btn:hover {
+  background-color: #45a049;
+}
+.reset-btn {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.reset-btn:hover {
+  background-color: #da190b;
+}
