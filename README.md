@@ -1,5 +1,5 @@
 #Namaste React
-
+//Swiggy API format might change with time, so we might need to refactor the data fetching accordingly afterwards.
 /\*\*
 
 - Structure of our food ordering app

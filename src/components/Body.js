@@ -23,7 +23,7 @@ const Body = () => {
   }, []);
 
   const buttonClickhandler = () => {
-    const filteredList = filteredRestaurantList?.filter(
+    const filteredList = restaurantList?.filter(
       (restaurant) => restaurant.info.avgRating > 4.1
     );
     setFilteredRestaurantList(filteredList);
@@ -42,18 +42,34 @@ const Body = () => {
 
   return (
     <>
-      <input
-        type="text"
-        className="search-input"
-        placeholder="Search for restaurants..."
-        value={searchText}
-        onChange={(e) => {
-          setSearchText(e.target.value);
-        }}
-      />
-      <button className="search-btn" onClick={searchHandler}>
-        Search
-      </button>
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search for restaurants..."
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              searchHandler();
+            }
+          }}
+        />
+        <button
+          className="cross-btn"
+          onClick={() => {
+            setSearchText("");
+            setFilteredRestaurantList(restaurantList);
+          }}
+        >
+          X
+        </button>
+        <button className="search-btn" onClick={searchHandler}>
+          Search
+        </button>
+      </div>
       <button className="filter-btn" onClick={buttonClickhandler}>
         Top Rated Restaurants
       </button>
