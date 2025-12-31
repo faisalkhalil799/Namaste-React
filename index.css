@@ -34,6 +34,10 @@ img {
 .nav-items > ul > li:hover {
   border-bottom: 2px solid #3c3c3c;
 }
+.nav-items > ul > li > a {
+  text-decoration: none;
+  color: #3c3c3c;
+}
 
 .body-container {
   display: flex;
@@ -148,4 +152,7 @@ span {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.footer-text {
+  max-width: 100%;
 }
