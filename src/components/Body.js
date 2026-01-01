@@ -12,7 +12,7 @@ const Body = () => {
     );
     const json = await data.json();
     const restaurantsArray =
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setRestaurantList(restaurantsArray);
     setFilteredRestaurantList(restaurantsArray);
@@ -36,7 +36,7 @@ const Body = () => {
     setFilteredRestaurantList(searchResult);
   };
 
-  if (restaurantList.length === 0) {
+  if (restaurantList?.length === 0) {
     return <FakeCard />;
   }
 
@@ -74,7 +74,7 @@ const Body = () => {
         Top Rated Restaurants
       </button>
       <div className="body-container">
-        {filteredRestaurantList.map((restaurant) => (
+        {filteredRestaurantList?.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
         ))}
       </div>
