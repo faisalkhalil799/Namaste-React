@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import ErrorBoundary from "./components/ErrorBoundary";
 import About from "./components/About";
+import MenuCard from "./components/MenuCard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -20,6 +21,7 @@ const routes = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
       { path: "/cart", element: <Cart /> },
+      { path: "restaurant/:resId", element: <MenuCard /> },
     ],
   },
 ]);

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import FakeCard from "./FakeCard";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -12,7 +13,7 @@ const Body = () => {
     );
     const json = await data.json();
     const restaurantsArray =
-      json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setRestaurantList(restaurantsArray);
     setFilteredRestaurantList(restaurantsArray);
@@ -75,7 +76,12 @@ const Body = () => {
       </button>
       <div className="body-container">
         {filteredRestaurantList?.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+          <Link
+            to={"/restaurant/" + restaurant.info.id}
+            key={restaurant.info.id}
+          >
+            <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+          </Link>
         ))}
       </div>
     </>
