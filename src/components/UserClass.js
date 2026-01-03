@@ -13,7 +13,10 @@ class AboutClass extends React.Component {
       // count: 0,
     };
   }
+
   async componentDidMount() {
+    console.log("Second console log");
+
     const response = await fetch(
       "https://api.github.com/users/faisalkhalil799"
     );
@@ -21,11 +24,24 @@ class AboutClass extends React.Component {
     this.setState({
       userInfo: json,
     });
+    this.timerId = setInterval(() => {
+      console.log("Printing every second");
+    }, 1000);
+  }
+
+  componentDidUpdate() {
+    console.log("Third console log");
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+    console.log("Fourth console log");
   }
   // increaseCounter = () => {
   //   this.setState({ count: this.state.count + 1 });
   // };
   render() {
+    console.log("First console log");
     // const { name, twitterHandle } = this.props;
     const { name, login, avatar_url } = this.state.userInfo;
     return (
