@@ -1,3 +1,8 @@
+@import "tailwindcss";
+
+/* From now onwards we will be using tailwind css instead of writing plain css on our own */
+
+/* Commenting everything what we have written till now
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -155,4 +160,4 @@ span {
 }
 .footer-text {
   max-width: 100%;
-}
+} */

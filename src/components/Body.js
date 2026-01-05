@@ -31,7 +31,7 @@ const Body = () => {
   };
 
   const searchHandler = () => {
-    const searchResult = restaurantList.filter((restaurant) =>
+    const searchResult = restaurantList?.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredRestaurantList(searchResult);
