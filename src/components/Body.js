@@ -13,7 +13,7 @@ const Body = () => {
     );
     const json = await data.json();
     const restaurantsArray =
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setRestaurantList(restaurantsArray);
     setFilteredRestaurantList(restaurantsArray);
@@ -43,38 +43,52 @@ const Body = () => {
 
   return (
     <>
-      <div className="search-container">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search for restaurants..."
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              searchHandler();
-            }
-          }}
-        />
+      <div className="flex flex-wrap items-center justify-between gap-6 mb-6">
+        <div className="flex items-center gap-3">
+          <input
+            type="text"
+            placeholder="Search for restaurants..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && searchHandler()}
+            className="w-72 px-4 py-2 rounded-md border border-slate-300 
+                 focus:outline-none focus:ring-2 focus:ring-emerald-500 
+                 text-slate-700 placeholder-slate-400"
+          />
+
+          <button
+            onClick={() => {
+              setSearchText("");
+              setFilteredRestaurantList(restaurantList);
+            }}
+            className="px-3 py-2 rounded-md bg-slate-200 
+                   hover:bg-slate-300 text-slate-700 
+                   transition"
+          >
+            ✕
+          </button>
+
+          <button
+            onClick={searchHandler}
+            className="px-5 py-2 rounded-md bg-emerald-600 
+                 text-white font-medium 
+                 hover:bg-emerald-700 transition"
+          >
+            Search
+          </button>
+        </div>
+
         <button
-          className="cross-btn"
-          onClick={() => {
-            setSearchText("");
-            setFilteredRestaurantList(restaurantList);
-          }}
+          onClick={buttonClickhandler}
+          className="px-5 py-2 rounded-md bg-slate-800 
+               text-slate-100 font-medium 
+               hover:bg-slate-900 transition"
         >
-          X
-        </button>
-        <button className="search-btn" onClick={searchHandler}>
-          Search
+          ⭐ Top Rated Restaurants
         </button>
       </div>
-      <button className="filter-btn" onClick={buttonClickhandler}>
-        Top Rated Restaurants
-      </button>
-      <div className="body-container">
+
+      <div className="body-container flex flex-wrap">
         {filteredRestaurantList?.map((restaurant) => (
           <Link
             to={"/restaurant/" + restaurant.info.id}

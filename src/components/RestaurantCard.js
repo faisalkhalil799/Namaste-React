@@ -1,22 +1,45 @@
 import { CDN_URL } from "../utils/constants";
 const RestaurantCard = (props) => {
-  const { name, cloudinaryImageId, cuisines, avgRating, costForTwo } = props;
+  const {
+    name,
+    cloudinaryImageId,
+    cuisines,
+    avgRating = 3.5,
+    costForTwo,
+  } = props;
 
   return (
-    <div className="food-item">
+    <div
+      className="w-56 h-75 m-4 rounded-lg border border-gray-200 
+                 hover:shadow-lg transition-shadow duration-300 
+                 cursor-pointer flex flex-col"
+    >
       <img
+        className="w-full h-40 object-cover rounded-t-lg"
         src={
           cloudinaryImageId
             ? CDN_URL + cloudinaryImageId
             : "https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg"
         }
-        alt="Food Item Image"
+        alt="Food Item"
       />
-      <h3>{cuisines.join(", ")}</h3>
-      <p>{name}</p>
-      <span>Price: {costForTwo}</span>
-      <span>Rating: {avgRating} ⭐</span>
+
+      <div className="p-3 flex flex-col grow">
+        <h3 className="text-sm text-gray-600 font-medium line-clamp-1">
+          {cuisines.join(", ")}
+        </h3>
+
+        <p className="text-base font-semibold text-gray-800 line-clamp-2 mt-1">
+          {name}
+        </p>
+
+        <div className="mt-auto flex justify-between text-sm text-gray-700">
+          <span>{costForTwo}</span>
+          <span className="flex items-center gap-1">⭐ {avgRating}</span>
+        </div>
+      </div>
     </div>
   );
 };
+
 export default RestaurantCard;
