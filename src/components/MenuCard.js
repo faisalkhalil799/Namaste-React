@@ -5,6 +5,7 @@ import FakeCard from "./FakeCard"; /* Blocker : we are not able to fetch the dat
 import AccordionMenuCategory from "./AccordionMenuCategory";
 const MenuCard = () => {
   const [menuList, setMenuList] = useState(null);
+  const [isOpen, setIsOpen] = useState(null);
   const { resId } = useParams(); // const fetchMenuList = async () => { // const fetchedData = await fetch( // "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.99740&lng=79.00110&restaurantId=1211230" // ); // const text = await fetchedData.json(); // const jsonData = await fetchedData.json(); // setMenuList(jsonData); // };
   const fetchMenuList = () => {
     setMenuList(mockedMenus);
@@ -13,7 +14,6 @@ const MenuCard = () => {
     fetchMenuList();
   }, []);
   if (menuList === null) return <FakeCard />;
-  console.log(menuList);
   return menuList.map((listItem) => {
     if (listItem.appResId !== resId) return null;
 
@@ -22,8 +22,21 @@ const MenuCard = () => {
         <h1 className="text-center m-5 p-2 text-3xl font-extrabold">
           {listItem.name}
         </h1>
+        <h2 className="font-bold">
+          {listItem.cuisines.join(", ")} : {listItem.costForTwoMessage}
+        </h2>
+
         {listItem?.categories?.map((ele, index) => {
-          return <AccordionMenuCategory key={index} {...ele} />;
+          return (
+            <AccordionMenuCategory
+              key={ele?.appResId}
+              {...ele}
+              isOpen={index === isOpen ? true : false}
+              setIsOpen={() => {
+                setIsOpen((prev) => (prev === index ? null : index));
+              }}
+            />
+          );
         })}
       </div>
     );
