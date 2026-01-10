@@ -1,12 +1,13 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import Context from "../utils/Context";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("Login");
   const userStatus = useOnlineStatus();
-
+  const contextValue = useContext(Context);
   return (
     <header className="w-full bg-slate-900 shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
@@ -23,9 +24,13 @@ const Header = () => {
 
         <nav className="flex items-center gap-6">
           <ul className="flex items-center gap-5 text-slate-300 font-medium">
+            <li className="text-slate-100 font-semibold">
+              {contextValue.loggedInUser}
+            </li>
+
             <li
               className="flex items-center gap-2 px-3 py-1 
-                           bg-slate-800 rounded-full text-sm"
+               bg-slate-800 rounded-full text-sm"
             >
               <span
                 className={`h-2 w-2 rounded-full ${
@@ -42,14 +47,19 @@ const Header = () => {
               { to: "/cart", label: "Cart" },
             ].map((link) => (
               <li key={link.to}>
-                <Link
+                <NavLink
                   to={link.to}
-                  className="px-3 py-2 rounded-md 
-                             hover:bg-slate-800 hover:text-white 
-                             transition-colors"
+                  className={({ isActive }) =>
+                    `px-3 py-2 rounded-md transition-colors
+           ${
+             isActive
+               ? "bg-rose-500 text-white"
+               : "hover:bg-slate-800 hover:text-white"
+           }`
+                  }
                 >
                   {link.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>

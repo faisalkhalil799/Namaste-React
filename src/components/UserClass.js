@@ -1,5 +1,5 @@
 import React from "react";
-
+import Context from "../utils/Context";
 class AboutClass extends React.Component {
   constructor(props) {
     super(props);
@@ -46,6 +46,14 @@ class AboutClass extends React.Component {
     const { name, login, avatar_url } = this.state.userInfo;
     return (
       <>
+        {/* Using context in class based components */}
+        <Context.Consumer>
+          {(data) => (
+            <h1 className="font-extrabold ">
+              {"Using context in class based components: " + data.loggedInUser}
+            </h1>
+          )}
+        </Context.Consumer>
         <h1>Coming from class based component</h1>
         <h2>
           Name:{name}, Github User Handle: {login}

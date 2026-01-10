@@ -18,7 +18,7 @@ const MenuCard = () => {
     if (listItem.appResId !== resId) return null;
 
     return (
-      <div className="flex flex-col items-center" key={listItem.appResId}>
+      <div className="flex flex-col items-center" key={listItem?.appResId}>
         <h1 className="text-center m-5 p-2 text-3xl font-extrabold">
           {listItem.name}
         </h1>

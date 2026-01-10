@@ -1,3 +1,25 @@
+const restaurantNames = [
+  "Spice Route",
+  "Royal Biryani House",
+  "Urban Tadka",
+  "Masala Junction",
+  "The Curry Leaf",
+  "Dragon Wok",
+  "Punjabi Dhaba",
+  "Bombay Street Kitchen",
+  "South Express",
+  "Tandoori Nights",
+  "Flavours of India",
+  "Wok & Roll",
+  "Biryani Blues",
+  "The Hungry Owl",
+  "Café Masala",
+  "Curry Kingdom",
+  "Street Treats",
+  "Chilli & Garlic",
+  "Foodie Hub",
+  "The Spice Factory",
+];
 const generateItems = (baseName, isVeg = true) =>
   Array.from({ length: 5 }, (_, i) => ({
     id: `${baseName}-${i + 1}`,
@@ -9,11 +31,11 @@ const generateItems = (baseName, isVeg = true) =>
     isCustomisable: i % 2 === 0,
   }));
 
-const mockMenus = Array.from({ length: 20 }, (_, i) => ({
-  appResId: `R${1 + i}`,
-  name: `Restaurant ${i + 1}`,
+const mockMenus = restaurantNames.map((name, index) => ({
+  appResId: `R${index + 1}`,
+  name,
   cuisines: ["Indian", "Chinese"],
-  costForTwoMessage: `₹${200 + (i + 1) * 10} for two`,
+  costForTwoMessage: `₹${200 + (index + 1) * 10} for two`,
   categories: [
     {
       id: "starters",
@@ -23,7 +45,7 @@ const mockMenus = Array.from({ length: 20 }, (_, i) => ({
     {
       id: "main",
       title: "Main Course",
-      items: generateItems("Main Dish", i % 2 === 0),
+      items: generateItems("Main Dish", index % 2 === 0),
     },
     {
       id: "desserts",
