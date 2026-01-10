@@ -14,10 +14,10 @@ const MenuCard = () => {
   if (menuList === null) return <FakeCard />;
   console.log(menuList);
   return menuList.map((listItem) => {
-    if (listItem.resId !== resId) return null;
+    if (listItem.appResId !== resId) return null;
 
     return (
-      <div key={listItem.resId}>
+      <div key={listItem.appResId}>
         <h1>{listItem.name}</h1>
         <h2>
           {listItem.cuisines.join(", ")} : {listItem.costForTwoMessage}

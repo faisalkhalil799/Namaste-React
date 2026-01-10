@@ -10,7 +10,7 @@ const generateItems = (baseName, isVeg = true) =>
   }));
 
 const mockMenus = Array.from({ length: 20 }, (_, i) => ({
-  resId: `${100000 + i + 1}`,
+  appResId: `R${1 + i}`,
   name: `Restaurant ${i + 1}`,
   cuisines: ["Indian", "Chinese"],
   costForTwoMessage: `₹${200 + (i + 1) * 10} for two`,
