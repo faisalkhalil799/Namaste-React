@@ -9,10 +9,12 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import About from "./components/About";
 import MenuCard from "./components/MenuCard";
 import FakeCard from "./components/FakeCard";
+import Account from "./components/Account";
+import Cart from "./components/Cart";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const Cart = lazy(() => {
-  return import("./components/Cart");
+const Account = lazy(() => {
+  return import("./components/Account");
 });
 const routes = createBrowserRouter([
   {
@@ -23,11 +25,12 @@ const routes = createBrowserRouter([
       { path: "/", element: <Body /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/cart", element: <Cart /> },
       {
-        path: "/cart",
+        path: "/accountDetails",
         element: (
           <Suspense fallback={<FakeCard />}>
-            <Cart />
+            <Account />
           </Suspense>
         ),
       },

@@ -1,4 +1,9 @@
-const ItemsList = ({ items }) => {
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../utils/cartSlice";
+
+const ItemsList = ({ items, showAddButton = true }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="divide-y divide-slate-200 px-5 pb-4">
       {items?.map((item) => (
@@ -17,9 +22,33 @@ const ItemsList = ({ items }) => {
           </div>
 
           {/* RIGHT */}
-          <button className="rounded-md border border-emerald-600 px-4 py-1 text-sm font-semibold text-emerald-600 hover:bg-emerald-50">
-            ADD
-          </button>
+          <div className="flex items-center gap-3">
+            {showAddButton ? (
+              <button
+                onClick={() => {
+                  dispatch(addItem(item));
+                  console.log(item);
+                }}
+                className="rounded-md border border-emerald-600 
+                           px-4 py-1 text-sm font-semibold 
+                           text-emerald-600 hover:bg-emerald-50"
+              >
+                ADD
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  console.log(item.id);
+                  dispatch(removeItem(item.id));
+                }}
+                className="rounded-md border border-rose-600 
+                           px-4 py-1 text-sm font-semibold 
+                           text-rose-600 hover:bg-rose-50"
+              >
+                REMOVE
+              </button>
+            )}
+          </div>
         </div>
       ))}
     </div>
