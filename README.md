@@ -19,3 +19,12 @@
   - Address
   - Contact
     \*\*/
+
+#Redux
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- connect our store with app
+- slice (cart slice)
+- dispatch(action)
+- selectors
