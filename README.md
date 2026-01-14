@@ -28,3 +28,13 @@
 - slice (cart slice)
 - dispatch(action)
 - selectors
+
+#Setting up testing in our app
+
+- Install React Testing Library
+- Install Jest
+- Install babel-jest dependencies
+- Configure babel
+- Configure parcel babel file to disable default babel transpilation
+- Jest npx jest --init
+  Install jsdom library
