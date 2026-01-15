@@ -37,4 +37,8 @@
 - Configure babel
 - Configure parcel babel file to disable default babel transpilation
 - Jest npx jest --init
-  Install jsdom library
+- Install jsdom library
+- install @babel/preset-react => this is done to enable jsx in the test files else we won't be able to find the jsx in the document.
+- Configure @babel/preset-react into babel.config.js
+  //to get toBeInTheDocument & similar function for matching the desired results
+- install @testing-library/jest-dom
