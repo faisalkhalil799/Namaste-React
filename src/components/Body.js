@@ -68,6 +68,7 @@ const Body = () => {
             onKeyDown={(e) => e.key === "Enter" && searchHandler()}
             className="w-72 px-4 py-2 rounded-md border border-slate-300 
               focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            data-testid="inputBox"
           />
 
           <button

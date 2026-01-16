@@ -13,6 +13,7 @@ const RestaurantCard = (props) => {
       className="w-56 h-75 m-4 rounded-lg border border-gray-200 
                  hover:shadow-lg transition-shadow duration-300 
                  cursor-pointer flex flex-col"
+      data-testid="restaurantCard"
     >
       <img
         className="w-full h-40 object-cover rounded-t-lg"

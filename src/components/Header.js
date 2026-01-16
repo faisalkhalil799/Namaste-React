@@ -10,7 +10,6 @@ const Header = () => {
   const userStatus = useOnlineStatus();
   const contextValue = useContext(Context);
   const cartItems = useSelector((state) => state.cart.items.length);
-  console.log(cartItems);
   return (
     <header className="w-full bg-slate-900 shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
